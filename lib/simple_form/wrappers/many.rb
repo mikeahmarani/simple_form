@@ -51,6 +51,7 @@ module SimpleForm
 
       def wrap(input, options, content)
         return content if options[namespace] == false
+        return if defaults[:unless_blank] && content.empty?
 
         tag = (namespace && options[:"#{namespace}_tag"]) || @defaults[:tag]
         return content unless tag
